@@ -1,0 +1,70 @@
+<h1>ORDERS</h1>
+
+    <table>
+        <tr>
+        <th>Order Id</th>
+        <th>Status</th>
+        <th>Amount</th>
+        {{!-- <th><button>Pay</button></th> --}}
+        </tr>
+
+
+
+        {{#each orders}}
+        <tr>
+          <td> {{orderId}}</td>
+        <td>{{status}}</td>
+        <td>{{amount}}</td>
+        <td><a href="/update-order" class="checkoutButton" >{{buttonStatus}}</a></td>
+        </tr>
+
+{{#each order2}}
+         <tr>
+          <td> {{orderId}}</td>
+        <td> {{status}} </td>
+        <td>{{amount}}</td>
+        <td><a href="/collect-order" class="checkoutButton2" >{{buttonStatus}}</a></td>
+        </tr>
+
+ {{/each}}
+
+  {{#each order3}}
+        <tr>
+          <td> {{orderId}}</td>
+        <td><button> {{status}} </button></td>
+        <td>{{amount}}</td>
+        
+        </tr>
+        {{/each}}
+
+  
+
+        {{/each}}
+
+            {{!-- {{#each order2}}
+        <tr>
+          <td> {{orderId}}</td>
+        <td> {{status}} </td>
+        <td>{{amount}}</td>
+        <td><a href="/collect-order" class="checkoutButton2" >{{buttonStatus}}</a></td>
+        </tr>
+        {{/each}} --}}
+
+          
+
+    
+
+
+    </table>
+
+    {{!-- <ul>
+        {{#each orders}}
+       
+       {{orderId}}
+            
+        {{/each}} 
+</ul> --}}
+
+
+    
+  

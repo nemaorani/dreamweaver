@@ -4,6 +4,75 @@ var theSmallTotal = 0;
 var theMediumTotal = 0;
 var theLargeTotal = 0;
 var customerID = 0
+let paymentVal;
+var message = ""
+var allOrders = [];
+var orderID =1;
+
+
+function createOrder(){
+ //orderID++ 
+ const order = {
+   orderId : orderID++,
+   status : "Payment due" ,
+   amount : Number(theSmallTotal + theLargeTotal + theMediumTotal).toFixed(2),
+   buttonStatus: "Pay",
+}
+ allOrders.push(order)
+}
+
+function getOrders(){
+ return allOrders
+}
+function updtOrder(){
+   const order2 = {
+      orderId : orderID,
+      status : "Paid" ,
+      amount : Number(theSmallTotal + theLargeTotal + theMediumTotal).toFixed(2),
+      buttonStatus: "Collect",
+   }
+   allOrders.push(order2)
+}
+function getUpdtOrders(){
+   return allOrders
+  }
+
+
+  function collectOrder(){
+   const order3 = {
+      orderId : orderID,
+      status : "Collected" ,
+      amount : Number(theSmallTotal + theLargeTotal + theMediumTotal).toFixed(2),
+      buttonStatus: "",
+   }
+   allOrders.push(order3)
+}
+function getCollectOrders(){
+   return allOrders
+  }
+
+
+
+function payVal(value){
+   paymentVal = Number(value.paymentVal)
+}
+
+function getValue(){
+   return paymentVal
+}
+
+function payMessage(){
+   var gtotal = grandTotalPizza();
+   if (gtotal<=paymentVal){
+      message ==="Enjoy your Pizza"
+   }else if (gtotal>= paymentVal){
+      message ==="Amount is not enough"
+   }
+} 
+
+function getMessage(){
+   return message
+}
 
 function customerIds(){
    customerID += 12.00
@@ -46,7 +115,7 @@ function minusLargePizza(){
 }
 
 function customerIdea(){
-   return customerID.toFixed(2);
+   return customerID;
 }
 
  function smallPizzaTotal(){
@@ -59,7 +128,7 @@ function largePizzaTotal(){
    return theLargeTotal.toFixed(2)
 }
 function grandTotalPizza(){
-   return Number(theSmallTotal + theLargeTotal + theMediumTotal).toFixed(2)
+   return Number(theSmallTotal + theLargeTotal + theMediumTotal)
 }
 
 function checkout(){
@@ -96,7 +165,10 @@ if ( actionType >= grandTotalOne.innerHTML ){
 }
 
  return {
-  
+   getMessage,
+   payMessage,
+   payVal,
+   getValue,
    customerIds,
    customerIdea,
      buySmallPizza,
@@ -114,5 +186,11 @@ if ( actionType >= grandTotalOne.innerHTML ){
      grandTotalPizza,
      checkout,
      action,
+     createOrder,
+     getOrders,
+     getUpdtOrders,
+     updtOrder,
+     collectOrder,
+     getCollectOrders
  }
  }

@@ -18,13 +18,14 @@ body {
 
 .circleButton {
     background-color: #BE0AFF;
-    border: slategray solid 1px;
+    
     color: white;
     border-radius: 50%;
     text-align: center;
     display: inline-block;
     margin: 4px;
     cursor: pointer;
+    text-decoration: none;
 }
 .sqButton {
     background-color: #BE0AFF;
@@ -62,6 +63,7 @@ body {
     width: 50%;
     border-radius: 5px;
     cursor: pointer;  
+    text-decoration: none;
 }
 .checkoutButton {
     background-color: #147df5;

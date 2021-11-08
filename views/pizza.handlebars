@@ -35,3 +35,27 @@
             <div>
                     <span action="/update-userID" class="id">R{{userID}}</span>
                 </div> --}}
+
+<div class="section" >
+
+	<h2>Create a reminder</h2> 
+
+	<form action="/reminder" method="POST">
+
+		<div>
+			<label for="">Payment amount:</label>
+			<input type="text" name="firstName" >
+		</div>
+	
+		{{!-- <div>
+			<label for="">Days due in:</label>
+
+			<input type="text" name="dayCount" placeholder="Enter the # of days">
+		</div> --}}
+
+		<div>
+			<input type="submit" class="bigger-button" value="Pay">
+		</div>
+	</form>
+
+</div>

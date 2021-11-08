@@ -5,12 +5,22 @@ const PizzaCart = require('./pizzaCartFactory')
 
 const pizzaCart = PizzaCart();
 
+var session = require('express-session')
+
+var bodyParser = require('body-parser')
+
 const app = express();
 const PORT =  process.env.PORT || 3017;
 
 // enable the req.body object - to allow us to use HTML forms
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 
 // enable the static folder...
 app.use(express.static('public'));
@@ -20,24 +30,28 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+// Use the http-	session middleware
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+
+
 let counter = 0;
 
 app.get('/', function(req, res) {
 
-	//console.log(pizzaCart.smallPizzaTotal())
+//	console.log(req.session)
 //	console.log(pizzaCart.customerIdea())
+	console.log(pizzaCart.getMessage())
 	res.render('index', {
 	  
 		smallPizzaTotal: pizzaCart.smallPizzaTotal(),
 		mediumPizzaTotal: pizzaCart.mediumPizzaTotal(),
 		largePizzaTotal: pizzaCart.largePizzaTotal(),
 		grandTotal: pizzaCart.grandTotalPizza(),
-		userID: pizzaCart.customerIdea()
+		userID: pizzaCart.customerIdea(),
+		paymentMsg: pizzaCart.getMessage() ,
 
 	});
 });
-
-
 
 app.post('/action', function(req, res) {
 	pizzaCart.buySmallPizza(req.body);
@@ -49,7 +63,6 @@ app.get('/buy-small',function(req, res){
 pizzaCart.buySmallPizza(req.body);
 res.redirect('/')
 })
-
 
 app.get('/buy-medium',function(req, res){
 	pizzaCart.buyMediumPizza(req.body);
@@ -96,11 +109,11 @@ app.get('/info',function(req, res){
 //	res.redirect('/')
 })
 
-
 app.get('/count', function(req, res) {
 	res.render('pizza', {
 		counter
 	});
+
 });
 
 app.post('/count', function(req, res) {
@@ -136,8 +149,91 @@ app.get('/update-userID',function(req, res){
 	//console.log('Our App')
 	pizzaCart.customerIds(req.body);
 	
-	res.redirect('/count')
+	res.redirect('/')
 })
+
+app.get('/count', function(req, res) {
+	res.render('pizza', {
+		reminders
+	});
+});
+
+app.post('/msg', function(req, res) {
+	
+	pizzaCart.payVal(req.body);
+	res.redirect('/');
+});
+
+app.get('/orders', function(req, res) {
+	//var orders = getOrders()
+	console.log(pizzaCart.getOrders())
+	console.log(req.body)
+	res.render('orders', {
+	//	orders	
+	orders: pizzaCart.getOrders(),
+	grandTotal: pizzaCart.grandTotalPizza(),
+	order2: pizzaCart.getUpdtOrders(),
+	order3: pizzaCart.getCollectOrders()
+	})
+
+});
+
+app.get('/create-order', function(req, res) {
+	
+	pizzaCart.createOrder(req.body)
+//	console.log(req.body)
+	res.redirect('/')
+
+});
+app.get('/update-order', function(req, res) {
+	
+	pizzaCart.updtOrder(req.body)
+	res.redirect('orders')
+});
+
+app.get('/collect-order', function(req, res) {
+	
+	pizzaCart. collectOrder(req.body)
+	res.redirect('orders')
+});
+
+
+app.get('/login', function(req, res) {
+	
+	res.render('login')
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.get('/',function(req, res){
+    
+
+//    res.render('index', {
+       
+//    settings: settingsBill.getSettings(),
+//    totals: settingsBill.totals(),
+//    textColor:settingsBill.getTextColour()
+//   });
+
+
+// });
+
+
 
 
 

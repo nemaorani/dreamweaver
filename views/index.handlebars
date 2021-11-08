@@ -26,19 +26,19 @@
 
 <body>
 
-  <div class="container">
+    <div class="container">
 
         <div class="row">
             <div class="col-12 center">
-                <h1>Perfect Pizza</h1>
-                
+                <h1>Control Panel</h1>
+
 
             </div>
 
         </div>
 
 
-        <div class="row">
+        {{!-- <div class="row">
             <div class="col-5 right">
                 <div>
                     Small
@@ -126,140 +126,193 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
 
-        <div class="row">
+        {{!-- <div class="row">
             <div class="col-12 center">
-                <a href="/update-userID" class="checkoutButton" >Checkout</a>
+                <a href="/update-userID" class="checkoutButton">Checkout</a>
 
-            </div>  
+            </div>
+        </div> --}}
+
+
+        {{!-- <div class="row">
+            <div class="col-12 center">
+                <a href="/create-order" class="checkoutButton">Order</a>
+                <span class="grandTotalOne">R{{orders}}</span>
+            </div>
         </div>
+
+
+
+
+
+        <div>
+
+        </div>
+
+        <div class="section">
+
+            <h2>Order</h2>
+
+            <span class="id">#{{userID}}</span> --}}
+
+            {{!-- <form action="/reminder" method="POST">
+
                 <div>
-                    <span class="id">R{{userID}}</span>
+                    <label for="">Payment amount:</label>
+                    <input type="text" name="firstName">
                 </div>
 
-
-        <div class="row1 hidden">
-            <div class="col-12 center">
-                
-                <h3>Payment amount: </h3>
-
                 <div>
-        
-                <input type="text" name="" value="" class="Payments">
+                    <input type="submit" class="bigger-button" value="Pay">
+                </div>
+            </form> --}}
+
+        {{!-- </div>
+
+
+
+        <div>
+            <span class="grandTotalOne">Amount due: R{{grandTotal}}</span>
+        </div>
+
+
+        <div class="row1">
+            <div class="col-12 center">
+
+                <h3>Payment amount: </h3> --}}
+
+                {{!-- <form action="/msg" method="POST"> --}}
+                    {{!-- <div> --}}
+
+                        {{!-- <input type="text" name="" value="" class="Payments"> --}}
+
+                        {{!--
+                    </div> --}}
+
+                    {{!-- <button class="payButton" type="submit">Purchase</button>
+
+                    <div>
+
+                    </div> --}}
+                    {{!--
+                </form> --}}
+
+                <span class="">{{paymentMsg}}</span>
 
             </div>
 
-                 <button class="payButton">Purchase</button> 
-                
-                </div>
-
-            </div>
+        </div>
 
         <div class="row2 hidden">
             <div class="col-12 center">
-                    
-                 <h1>Enjoy your Pizzas!😊</h1>
+
+                <h1>Enjoy your Pizzas!😊</h1>
             </div>
-         </div>
+        </div>
 
 
-         
+
         <div class="row3 hidden">
             <div class="col-12 center">
-                    
-                 <h1>Sorry! that is not enough money ☹</h1>
-            </div>
-         </div>
 
-         <div class="row4 hidden">
-            <div class="col-12 center">
-                    
-                 <h1>Please enter an Amount</h1>
+                <h1>Sorry! that is not enough money ☹</h1>
             </div>
-         </div>
-    
+        </div>
+
+        <div class="row4 hidden">
+            <div class="col-12 center">
+
+                <h1>Please enter an Amount</h1>
+            </div>
+        </div>
+
 
 
 
         <div class="row">
             <div class="col-4 center pizza-info">
                 <!-- This content will take up 3/12 (or 1/4) of the container -->
-                <h2>Small Pizza</h2>
-                <img src="Pizza Image.png" width="150">
-                <h3>R68.00</h3>
-                <div>
-                    Tshidiso Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et
-                    dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                    ea
-                    commodo
-                    consequat.
+                <h2>Green House</h2>
+                <img src="greenhouse-icon-edited.jpg" width="150">
+                <h3>
+                    <div>
+                        <span class="smallTotalOne">Temperature: {{smallPizzaTotal}} °C</span>
+                    </div>
+                </h3>
+
+                <div class="circleButton plusButton1">
+
+                    <a href="/add-small" class="circleButton plusButton1" type="button" name="button">+</a>
+
                 </div>
-                <div class="col-12 center">
 
+              
+                <div class="circleButton plusButton1">
 
-                 
-                    <a href="/buy-small" class="buyButton1 buyButton" type="submit" name="button"  >Buy</a>
+                    <a href="/minus-small" class="circleButton plusButton1" type="button" name="button">-</a>
+
+                </div>
                 
 
-                </div>
+                
             </div>
             <div class="col-4 center pizza-info">
                 <!-- This content will take up 3/12 (or 1/4) of the container -->
-                <h2>Medium Pizza</h2>
-                <img src="Pizza Image.png" width="150">
-                <h3>R89.00</h3>
+                 <h2>Pesticide Level</h2>
+                <img src="pesticide-level.jpg" width="150">
+                <h3>
+                    <div>
+                        <span class="mediumTotalOne">Pesticide Level: {{mediumPizzaTotal}} Kg</span>
 
-                <div>
-                    Tshidiso Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et
-                    dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                    ea
-                    commodo
-                    consequat.
+                        
+                    </div>
+                </h3>
+
+                <div class="circleButton plusButton1">
+
+                    <a href="/add-medium" class="circleButton plusButton1" type="button" name="button">+</a>
+
                 </div>
-                <div class="col-12 center">
 
-                    <a href="/buy-medium" class="buyButton2 buyButton">Buy</a>
-    
+              
+                <div class="circleButton plusButton1">
+
+                    <a href="/minus-medium" class="circleButton plusButton1" type="button" name="button">-</a>
+
                 </div>
             </div>
             <div class="col-4 center pizza-info">
                 <!-- This content will take up 6/12 (or 1/2) of the container -->
-                <h2>Large Pizza</h2>
-                <img src="Pizza Image.png" width="150">
-                <h3>R129.00</h3>
-                <div>
-                    Tshidiso Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et
-                    dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                    ea
-                    commodo
-                    consequat.
-                </div>
-                <div class="col-12 center">
+              <h2>Water Level</h2>
+                <img src="water-level.png" width="150">
+                <h3>
+                    <div>
+                        <span class="largeTotalOne">Water Level: {{largePizzaTotal}} L</span>
+                        
+                    </div>
+                </h3>
 
-                    <a href="/buy-large" class="buyButton3 buyButton">Buy</a>
-    
+                <div class="circleButton plusButton1">
+
+                    <a href="/add-large" class="circleButton plusButton1" type="button" name="button">+</a>
+
+                </div>
+
+              
+                <div class="circleButton plusButton1">
+
+                    <a href="/minus-large" class="circleButton plusButton1" type="button" name="button">-</a>
+
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 contacts center">
-                <h2>Contact details</h2>
-                Contact us at: 0117468956 info@perfectpizza.co.za
-            </div>
-
-        </div>
+       
     </div>
     <script src="pizzaCartFactory.js"></script>
     <script src="pizzaCart.js" charset="utf-8"></script>
 </body>
 
 </html>
-   
